@@ -28,6 +28,7 @@ const resolvers = {
 		async wishlists(_: any, __: any) {
 			let collection = database.collection("wishlists");
 			const wishlists = await collection.find({}).toArray();
+			console.log(wishlists);
 			return wishlists;
 		},
 		wishlistsByUser: async (_: any, { user_id }: { user_id: any }) => {

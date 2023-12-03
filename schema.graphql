@@ -1,0 +1,68 @@
+type Query {
+	# Queries for wishlist
+	wishlist(id: ID!): Wishlist
+	wishlists: [Wishlist]
+	wishlistsByUser(user_id: ID!): [Wishlist]
+
+	# Queries for wish
+	wish(id: ID!): Wish
+	wishes: [Wish]
+	wishesByWishlist(wishlist_id: ID!): [Wish]
+
+	# Queries for profile
+	profileByUser(user_id: ID!): Profile
+}
+
+type Mutation {
+	# Mutations for wishlist
+	createWishlist(name: String!, user_id: String!): Wishlist
+	deleteWishlist(id: ID!): Boolean
+	updateWishlist(id: ID!, name: String): Wishlist
+
+	# Mutations for wish
+	createWish(wishlist_id: ID!, name: String!, description: String!, price: Float!, link: String!, img_url: String!): Wish
+	deleteWish(id: ID!): Boolean
+	updateWish(id: ID!, name: String!, description: String!, price: Float!, link: String!, img_url: String!): Wish
+	updateWishOrder(wishlist_id: ID!, wishes: [WishInput!]!): [Wish!]!
+
+	# Mutations for profile
+	createProfile(user_id: ID!, first_name: String!, last_name: String!, profile_img_url: String!): Profile
+	updateProfileImageUrl(user_id: ID!, profile_img_url: String): Profile
+}
+
+input WishInput {
+	id: ID!
+	name: String
+	description: String
+	price: Float
+	link: String
+	img_url: String
+	order: Int
+}
+
+type Wishlist {
+	id: ID
+	name: String
+	user_id: ID
+	wishes: [Wish]
+	date_created: String
+}
+
+type Wish {
+	id: ID
+	wishlist_id: ID
+	name: String
+	description: String
+	price: Float
+	link: String
+	img_url: String
+	order: Int
+}
+
+type Profile {
+	id: ID
+	user_id: ID
+	first_name: String
+	last_name: String
+	profile_img_url: String
+}

@@ -1,13 +1,14 @@
 {
-  "compilerOptions": {
-    "outDir": "dist",
+	"compilerOptions": {
+		"outDir": "dist",
 
-    "incremental": true,
-    "target": "es6",
-    "module": "commonjs",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  }
+		"incremental": true,
+		"target": "es2017",
+		"module": "es2022",
+		"strict": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"moduleResolution": "node"
+	}
 }
